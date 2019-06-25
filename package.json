@@ -2,11 +2,11 @@
   "name": "node-api",
   "version": "1.0.0",
   "description": "A simple Node.js api.",
-  "main": "src/server.js",
+  "server": "src/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon --exec \"babel-node src/server.js\"",
-    "build": "babel src --out-dir dist",
+    "build": "babel src --out-dir dist --copy-files",
     "server": "node dist/server.js"
   },
   "author": "Jhonatan R. Santos",
