@@ -1,22 +1,39 @@
 {
-  "name": "node-api",
+  "name": "api",
   "version": "1.0.0",
-  "description": "A simple Node.js api.",
-  "server": "src/server.js",
+  "description": "",
+  "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon --exec \"babel-node src/server.js\"",
+    "pretest": "cross-env NODE_ENV=test sequelize db:migrate",
+    "test": "cross-env NODE_ENV=test jest --detectOpenHandles",
+    "posttest": "cross-env NODE_ENV=test sequelize db:migrate:undo:all",
+    "dev": "nodemon --exec \"babel-node src/server.js\" --ignore __tests__",
     "build": "babel src --out-dir dist --copy-files",
-    "server": "node dist/server.js"
+    "server": "node dist/main.js"
   },
   "author": "Jhonatan R. Santos",
   "license": "MIT",
+  "dependencies": {
+    "@babel/polyfill": "^7.4.4",
+    "cors": "^2.8.5",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "pg": "^7.12.1",
+    "sequelize": "^5.15.0"
+  },
   "devDependencies": {
-    "@babel/core": "^7.4.5",
-    "@babel/cli": "^7.4.4",
-    "@babel/node": "^7.4.5",
-    "@babel/plugin-proposal-class-properties": "^7.4.4",
-    "@babel/preset-env": "^7.4.5",
-    "nodemon": "^1.19.1"
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/node": "^7.5.5",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@types/jest": "^24.0.17",
+    "babel-jest": "^24.9.0",
+    "cross-env": "^5.2.0",
+    "jest": "^24.9.0",
+    "nodemon": "^1.19.1",
+    "sequelize-cli": "^5.5.0",
+    "supertest": "^4.0.2"
   }
 }
