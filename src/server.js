@@ -1,1 +1,6 @@
-console.log("200 OK");
+import app from "./app/app";
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+    console.log(`Server started on port ${PORT}.`);
+});
